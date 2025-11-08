@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <locale.h>
+#include <stdbool.h>
 
 #define MAX 5
 
@@ -26,12 +28,39 @@ typedef struct {
 } territory;
 
 void show_territory(territory *t);
+void create_territory(territory *t);
 
 int main(void) {
+    setlocale(LC_ALL, "pt_BR.UTF-8");
     territory t[MAX];
-
+    
+    int option;
+    bool run_game = true; // Flag to control game flow
+    while(run_game) {
+        show_menu();
+        scanf("\d", option);
+        switch (option) {
+            case 0:
+                run_game = false;
+                break;
+            case 1:
+                create_territory(*t[]);
+        
+        }
+    
+    }
     return 0;
 }
+
+void show_menu(void) {
+    printf("-----------------------------------\n");
+    printf("                MENU               \n");
+    printf("-----------------------------------\n");
+    printf("0 - Sair\n");
+    printf("1 - Cadastrar território\n");
+    printf("2 - Visualizar estado atual do mapa\n");
+    printf("------------------------------------\n");
+} 
 
 void show_territory(territory *t) {
     for (int i = 0; i < MAX; i++) {
